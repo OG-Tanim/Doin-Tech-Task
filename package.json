@@ -1,0 +1,24 @@
+{
+  "name": "home",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "snap": "vite build --ssr scripts/snapshot-entry.jsx --outDir .snapshot/build --emptyOutDir --logLevel error && node .snapshot/build/snapshot-entry.js",
+    "snap:base": "npm run snap -- .snapshot/baseline.html",
+    "snap:check": "npm run snap -- .snapshot/current.html && diff -u .snapshot/baseline.html .snapshot/current.html && echo SNAPSHOT-IDENTICAL"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "tailwindcss": "^4.1.0",
+    "vite": "^7.1.0"
+  }
+}
